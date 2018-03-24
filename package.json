@@ -1,0 +1,18 @@
+{
+  "name": "@hysryt/sukusho",
+  "version": "1.0.0",
+  "description": "スクショを撮るやつ",
+  "main": "index.js",
+  "bin": "bin/sukusho.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jimp": "^0.2.28",
+    "puppeteer": "^1.2.0"
+  },
+  "repository": "github:hysryt/sukusho"
+}

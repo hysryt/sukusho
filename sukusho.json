@@ -1,0 +1,13 @@
+{
+  "pages": [
+    {
+      "name": "top",
+      "url": "http://example.com",
+      "type": "jpg"
+    }, {
+      "name": "menu",
+      "url": "http://example.com/menu",
+      "type": "jpg"
+    }
+  ]
+}

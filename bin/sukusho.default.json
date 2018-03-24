@@ -1,0 +1,14 @@
+{
+  "viewports": {
+    "pc": {
+      "device-width": 1280,
+      "dpr": 1
+    },
+    "sp": {
+      "device-width": 400,
+      "dpr": 2,
+      "save-width": 400
+    }
+  }
+}
+      
