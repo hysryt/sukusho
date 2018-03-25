@@ -8,7 +8,7 @@ class Resizer {
 
   resize() {
     jimp.read(this.filepath).then((img) => {
-      console.log('Resizing...');
+      console.log('📐 Resizing...');
 
       img.resize(this.width, jimp.AUTO).write(this.filepath);
 

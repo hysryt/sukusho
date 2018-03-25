@@ -13,7 +13,7 @@ class Screenshoter {
   }
 
   async screenshot(target) {
-    console.log('Accessing...');
+    console.log('🚀 Accessing...');
     await this.page.goto(target.url);
     console.log('Access OK.');
 
@@ -41,7 +41,7 @@ class Screenshoter {
   }
 
   async screenshotViewport(target, viewportName, viewport) {
-    console.log('Capturing ' + target.name + ' [' + viewportName + '] ...');
+    console.log('📸 Capturing ' + target.name + ' [' + viewportName + '] ...');
       
     await this.setViewportToPage(viewport);
     await this.page.screenshot({
