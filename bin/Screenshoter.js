@@ -13,9 +13,7 @@ class Screenshoter {
   }
 
   async screenshot(target) {
-    console.log('🚀 Accessing...');
-    await this.page.goto(target.url);
-    console.log('Access OK.');
+    await this.access(target.url);
 
     await this.addDebugMarkToPage();
 
@@ -34,6 +32,14 @@ class Screenshoter {
         resizer.resize();
       }
     }
+  }
+
+  async access(url) {
+    console.log('🚀 Accessing...');
+
+    await this.page.goto(url);
+
+    console.log('Access OK.');
   }
 
   async addDebugMarkToPage() {
