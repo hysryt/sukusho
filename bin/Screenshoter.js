@@ -61,6 +61,11 @@ class Screenshoter {
       'height': v['device-height'],
       'deviceScaleFactor': v['dpr']
     });
+
+    if (v['user-agent']) {
+      await this.page.setUserAgent(v['user-agent']);
+      await this.page.reload();
+    }
   }
 
   createFilename(viewportName, target) {

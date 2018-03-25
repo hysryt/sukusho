@@ -7,7 +7,8 @@
     "sp": {
       "device-width": 400,
       "dpr": 2,
-      "save-width": 400
+      "save-width": 400,
+      "user-agent": "Android"
     }
   }
 }
