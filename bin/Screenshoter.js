@@ -19,6 +19,7 @@ class Screenshoter {
 
     await this.addDebugMarkToPage();
 
+    // forEach() では await がうまく動作しないため for で処理する
     const viewportNames = Object.keys(this.viewports);
     for (let i = 0; i < viewportNames.length; i++) {
       const viewportName = viewportNames[i];
@@ -26,6 +27,7 @@ class Screenshoter {
 
       await this.screenshotViewport(target, viewportName, viewport);
 
+      // 必要に応じてリサイズ処理を行う
       if (viewport['save-width']) {
         const filename = this.createFilename(viewportName, target);
         const resizer = new Resizer(filename, viewport['save-width']);
@@ -62,6 +64,7 @@ class Screenshoter {
       'deviceScaleFactor': v['dpr']
     });
 
+    // 必要に応じて UserAgent を変更しページを更新する
     if (v['user-agent']) {
       await this.page.setUserAgent(v['user-agent']);
       await this.page.reload();

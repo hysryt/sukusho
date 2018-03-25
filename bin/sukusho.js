@@ -11,6 +11,10 @@ const Screenshoter = require('./Screenshoter.js');
 class SukushoError extends Error {}
 
 class Sukusho {
+  /**
+   * sukusho.default.json と 実行ファイルパスの suskusho.json から設定値を取得
+   * sukusho.default.json の値を sukusho.json で上書きする
+   */
   loadConfig() {
     const defaultConfig = require(path.join(__dirname, DEFAULT_CONF_FILENAME));
     const config = this.loadUserConfig();
@@ -34,6 +38,7 @@ class Sukusho {
   
     const screenshoter = new Screenshoter(page, config.viewports);
   
+    // forEach() では await がうまく動作しないため for で処理する
     for (let i = 0; i < config.targets.length; i++) {
       await screenshoter.screenshot(config.targets[i]);
     }
