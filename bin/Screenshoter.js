@@ -15,8 +15,6 @@ class Screenshoter {
   async screenshot(target) {
     await this.access(target.url);
 
-    await this.addDebugMarkToPage();
-
     // forEach() では await がうまく動作しないため for で処理する
     const viewportNames = Object.keys(this.viewports);
     for (let i = 0; i < viewportNames.length; i++) {
@@ -48,10 +46,27 @@ class Screenshoter {
     });
   }
 
+  /**
+   * 高さを固定する。
+   * 高さ指定に vh が使われているとうまくスクリーンショットが取れないため、全て固定値に変換。
+   */
+  async finalizeElementHeight() {
+    await this.page.evaluate(() => {
+      const elements = document.querySelectorAll('*');
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].style.height = elements[i].offsetHeight + 'px'
+      }
+    });
+  }
+
   async screenshotViewport(target, viewportName, viewport) {
     console.log('📸 Capturing ' + target.name + ' [' + viewportName + '] ...');
       
     await this.setViewportToPage(viewport);
+
+    await this.addDebugMarkToPage();
+    await this.finalizeElementHeight();
+
     await this.page.screenshot({
       'path': this.createFilename(viewportName, target),
       'type': target.type,
@@ -70,11 +85,11 @@ class Screenshoter {
       'deviceScaleFactor': v['dpr']
     });
 
-    // 必要に応じて UserAgent を変更しページを更新する
     if (v['user-agent']) {
       await this.page.setUserAgent(v['user-agent']);
-      await this.page.reload();
     }
+
+    await this.page.reload();
   }
 
   createFilename(viewportName, target) {
