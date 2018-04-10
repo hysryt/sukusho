@@ -1,6 +1,6 @@
 {
   "name": "@hysryt/sukusho",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "スクショを撮るやつ",
   "main": "index.js",
   "bin": "bin/sukusho.js",
