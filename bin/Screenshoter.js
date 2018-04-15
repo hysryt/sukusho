@@ -67,9 +67,14 @@ class Screenshoter {
     await this.addDebugMarkToPage();
     await this.finalizeElementHeight();
 
+    let type = target.type;
+    if (type === 'jpg') {
+      type = 'jpeg';
+    }
+
     await this.page.screenshot({
       'path': this.createFilename(viewportName, target),
-      'type': target.type,
+      'type': type,
       'fullPage': true,
     });
 
