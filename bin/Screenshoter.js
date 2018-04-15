@@ -93,7 +93,13 @@ class Screenshoter {
   }
 
   createFilename(viewportName, target) {
-    return target.name + '_' + viewportName + '.' + target.type;
+    let extension = target.type;
+
+    if (extension === 'jpeg') {
+      extension = 'jpg';
+    }
+
+    return target.name + '_' + viewportName + '.' + extension;
   }
 }
 
